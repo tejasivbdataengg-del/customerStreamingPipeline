@@ -1,0 +1,26 @@
+{
+  "app_name": "CustomerStreamingPipeline",
+  "datalake": {
+    "parquet_path": "abfss://raw@account.dfs.core.windows.net/customers/parquet/",
+    "csv_path": "abfss://raw@account.dfs.core.windows.net/customers/csv/"
+  },
+  "jdbc": {
+    "url": "jdbc:sqlserver://your-sql-server:1433;databaseName=your_db",
+    "driver": "com.microsoft.sqlserver.jdbc.SQLServerDriver",
+    "user": "your_username",
+    "password": "your_password",
+    "table": "dbo.customers"
+  },
+  "kafka": {
+    "bootstrap_servers": "your-kafka-bootstrap:9092",
+    "topic": "customer-events",
+    "starting_offsets": "latest"
+  },
+  "mongodb": {
+    "uri": "mongodb://username:password@your-mongo-host:27017",
+    "database": "analytics",
+    "curated_collection": "customers_curated",
+    "quarantine_collection": "customers_quarantine"
+  },
+  "checkpoint_location": "abfss://checkpoint@account.dfs.core.windows.net/customer_pipeline/checkpoints/"
+}
